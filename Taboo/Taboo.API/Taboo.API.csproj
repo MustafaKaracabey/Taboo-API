@@ -19,5 +19,9 @@
     <ProjectReference Include="..\Taboo.Service\Taboo.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 
 </Project>

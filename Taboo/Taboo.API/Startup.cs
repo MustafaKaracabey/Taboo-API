@@ -18,6 +18,8 @@ using Taboo.Core.UnitOfWorks;
 using Taboo.Data;
 using Taboo.Data.IUnitOfWorks;
 using Taboo.Data.Repositories;
+using Taboo.Service;
+using Taboo.Service.Services;
 
 namespace Taboo.API
 {
@@ -37,6 +39,12 @@ namespace Taboo.API
             services.AddSwagger();
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IService<>), typeof(Service<>));
+
+            services.AddScoped<IWordService,WordService>();
+            services.AddScoped<ITabuService, TabuService>();
+
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddDbContext<EfDataContext>(
