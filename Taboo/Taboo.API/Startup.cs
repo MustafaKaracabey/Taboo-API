@@ -79,6 +79,13 @@ namespace Taboo.API
 
             app.UseRouting();
 
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
+
+
             app.UseAuthorization();
 
             //Add Swagger MiddleWare
