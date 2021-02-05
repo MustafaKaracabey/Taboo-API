@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Taboo.Core.Models;
 using Taboo.Core.Repositories;
 
@@ -15,6 +17,13 @@ namespace Taboo.Data.Repositories
             : base(context)
         {
 
+        }
+
+        public async Task<IEnumerable<Word>> GetAllWithTabusAsync()
+        {
+            return await EfDataContext.Words
+               .Include(a => a.Tabus)
+               .ToListAsync();
         }
 
         

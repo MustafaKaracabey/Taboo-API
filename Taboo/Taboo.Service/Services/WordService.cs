@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Taboo.Core.Models;
 using Taboo.Core.Repositories;
 using Taboo.Core.Services;
@@ -14,6 +15,11 @@ namespace Taboo.Service.Services
         : base(unitOfWorks,repository)
         {
 
+        }
+
+        public async Task<IEnumerable<Word>> GetAllWithTabusAsync()
+        {
+            return await _unitOfWork.Words.GetAllWithTabusAsync();
         }
     }
 }

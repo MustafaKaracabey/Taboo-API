@@ -57,7 +57,12 @@ namespace Taboo.API
                 options.UseSqlServer("name=ConnectionStrings:DefaultConnection", o => { o.MigrationsAssembly("Taboo.Data"); })
                 );
 
-            services.AddControllers();
+            //Search
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,6 +85,7 @@ namespace Taboo.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                
             });
         }
     }

@@ -26,9 +26,9 @@ namespace Taboo.API.Controllers
         }
 
         [HttpGet("")]
-        public async Task<IActionResult> GetAllWords()
+        public async Task<IActionResult> GetAllWithTabusAsync()
         {
-            var words = await _wordService.GetAllAsync();
+            var words = await _wordService.GetAllWithTabusAsync();
 
             return Ok(_mapper.Map<IEnumerable<WordDTO>>(words));
         }
