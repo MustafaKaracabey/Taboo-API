@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Taboo.Core\Taboo.Core.csproj" />
+    <ProjectReference Include="..\Taboo.Data\Taboo.Data.csproj" />
+  </ItemGroup>
+
 </Project>
