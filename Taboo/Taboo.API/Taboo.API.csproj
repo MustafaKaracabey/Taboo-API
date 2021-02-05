@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Taboo.Core\Taboo.Core.csproj" />
     <ProjectReference Include="..\Taboo.Data\Taboo.Data.csproj" />
     <ProjectReference Include="..\Taboo.Service\Taboo.Service.csproj" />

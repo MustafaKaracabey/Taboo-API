@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Taboo.API.Extensions;
 
 namespace Taboo.API
 {
@@ -25,6 +26,9 @@ namespace Taboo.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Adding Swagger Service For Docs
+            services.AddSwagger();
+
             services.AddControllers();
         }
 
@@ -41,6 +45,9 @@ namespace Taboo.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            //Add Swagger MiddleWare
+            app.UseCustomSwagger();
 
             app.UseEndpoints(endpoints =>
             {
