@@ -6,11 +6,18 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Taboo.API.Extensions;
+using Taboo.Core.Repositories;
+using Taboo.Core.Services;
+using Taboo.Core.UnitOfWorks;
+using Taboo.Data;
+using Taboo.Data.IUnitOfWorks;
+using Taboo.Data.Repositories;
 
 namespace Taboo.API
 {
@@ -28,6 +35,14 @@ namespace Taboo.API
         {
             //Adding Swagger Service For Docs
             services.AddSwagger();
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddDbContext<EfDataContext>(
+                options =>
+                options.UseSqlServer("name=ConnectionStrings:DefaultConnection", o => { o.MigrationsAssembly("Taboo.Data"); })
+                );
 
             services.AddControllers();
         }

@@ -11,6 +11,7 @@ namespace Taboo.Core.Repositories
         Task<TEntity> GetByIdAsync(int id);
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task AddAsync(TEntity entity);
+        //Aşağıdaki 2sin neden async değil araştır
         TEntity Update(TEntity entity);
         void Delete(TEntity entity);
 
