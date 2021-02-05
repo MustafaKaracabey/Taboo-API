@@ -57,6 +57,8 @@ namespace Taboo.API
                 options.UseSqlServer("name=ConnectionStrings:DefaultConnection", o => { o.MigrationsAssembly("Taboo.Data"); })
                 );
 
+            services.AddHttpClient();
+
             //Search
             services.AddControllers()
                 .AddNewtonsoftJson(options =>
