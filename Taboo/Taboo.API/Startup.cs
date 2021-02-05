@@ -21,6 +21,7 @@ using Taboo.Data.Repositories;
 using Taboo.Service;
 using Taboo.Service.Services;
 
+
 namespace Taboo.API
 {
     public class Startup
@@ -35,8 +36,12 @@ namespace Taboo.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddAutoMapper(typeof(Startup));
+
             //Adding Swagger Service For Docs
             services.AddSwagger();
+
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IService<>), typeof(Service<>));
