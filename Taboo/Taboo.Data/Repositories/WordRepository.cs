@@ -23,6 +23,7 @@ namespace Taboo.Data.Repositories
         {
             return await EfDataContext.Words
                .Include(a => a.Tabus)
+               .Include(a=>a.Category)
                .ToListAsync();
         }
 

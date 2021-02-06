@@ -48,6 +48,7 @@ namespace Taboo.API
 
             services.AddScoped<IWordService,WordService>();
             services.AddScoped<ITabuService, TabuService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();

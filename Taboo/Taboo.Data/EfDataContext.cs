@@ -15,6 +15,7 @@ namespace Taboo.Data
 
         public DbSet<Word> Words { get; set; }
         public DbSet<Tabu> Tabus { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +24,8 @@ namespace Taboo.Data
             .WithOne(s => s.Word)
             .HasForeignKey(s => s.WordId)
             .OnDelete(DeleteBehavior.Cascade);
+
+            //ForOther Relationship I did with Models (Aslında Her şeyi buradan configure etmem lazım modellere bir şey karıştırmamk lazım düzelt sonra)
 
         }
     }

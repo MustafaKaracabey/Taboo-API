@@ -14,9 +14,11 @@ namespace Taboo.Data.IUnitOfWorks
 
         private  WordRepository _wordRepository;
         private  TabuRepository _tabuRepository;
+        private CategoryRepository _categoryRepository;
 
         public ITabuRepository Tabus => _tabuRepository = _tabuRepository ?? new TabuRepository(_context);
         public IWordRepository Words => _wordRepository = _wordRepository ?? new WordRepository(_context);
+        public ICategoryRepository Categories => _categoryRepository = _categoryRepository ?? new CategoryRepository(_context);
 
 
         public UnitOfWork(EfDataContext efDataContext)

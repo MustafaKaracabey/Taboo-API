@@ -18,6 +18,21 @@ namespace Taboo.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
+            modelBuilder.Entity("Taboo.Core.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("Taboo.Core.Models.Tabu", b =>
                 {
                     b.Property<int>("TabuId")
@@ -45,13 +60,21 @@ namespace Taboo.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("DifficultyLevel")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsShown")
                         .HasColumnType("bit");
 
                     b.Property<string>("WordName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("WordId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Words");
                 });
@@ -65,6 +88,22 @@ namespace Taboo.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Word");
+                });
+
+            modelBuilder.Entity("Taboo.Core.Models.Word", b =>
+                {
+                    b.HasOne("Taboo.Core.Models.Category", "Category")
+                        .WithMany("Words")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Taboo.Core.Models.Category", b =>
+                {
+                    b.Navigation("Words");
                 });
 
             modelBuilder.Entity("Taboo.Core.Models.Word", b =>

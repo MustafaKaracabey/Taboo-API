@@ -15,10 +15,14 @@ namespace Taboo.API.Mappers
             //Domain To Resource
             CreateMap<Tabu, TabuDTO>();
             CreateMap<Word, WordDTO>();
+            CreateMap<Category, CategoryDTO>();
 
             //Resource To Domain
             CreateMap<TabuDTO, Tabu>();
             CreateMap<WordDTO, Word>();
+            CreateMap<CategoryDTO, Category>();
+
+            
         }
     }
 }

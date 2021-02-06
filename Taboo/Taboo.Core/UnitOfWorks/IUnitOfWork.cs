@@ -10,6 +10,7 @@ namespace Taboo.Core.UnitOfWorks
     {
         public IWordRepository Words { get;  }
         public ITabuRepository Tabus { get;  }
+        public ICategoryRepository Categories { get;  }
 
         Task CommitAsync();
         void Commit();
